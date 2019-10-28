@@ -1,0 +1,60 @@
+[core]
+	autocrlf = true
+	excludesfile = .\\gitignore_global.txt
+	filemode = true
+	hidedotfiles = true
+	editor = notepad
+[difftool "sourcetree"]
+	cmd = 'C:/Program Files/Beyond Compare 4/BComp.exe' \"$LOCAL\" \"$REMOTE\"
+[mergetool "sourcetree"]
+	cmd = 'C:/Program Files/Beyond Compare 4/BComp.exe' \"$LOCAL\" \"$REMOTE\" \"$BASE\" -o \"$MERGED\"
+	trustExitCode = true
+[push]
+	default = simple
+[credential]
+	helper = store
+[alias]
+	### Info ###
+	co = checkout
+	stat = status
+	view = "!start ."
+	fstr = grep -Ii --line-number
+	cfg = "!git config -l | grep alias | cut -c 7-" # List alias
+	editcfg = "!start notepad++ ~/.gitconfig"
+	patch = "!git diff > $(git branch-name).patch"
+	branch-name = "!git rev-parse --abbrev-ref HEAD"
+	branch-count = "!git rev-list --count HEAD ^master"
+	branch-status = "!git for-each-ref --format=\"%(refname:short) %(upstream:track)\" refs/heads"
+	open = "!function t { hash $1 >&/dev/null && echo $1 || return 1; } ; $(t start || t open || t cygstart || t xdg-open) $(git config remote.origin.url | sed -e 's#(git@git://)#http://#' -e 's@com:@com/@')"
+	rel = "!git fetch -nq && git rev-list --left-right --count origin/master...$(git branch-name) | sed -rn 's@([[:digit:]]+)[^[:digit:]]+([[:digit:]]+)@[Behind: \\1 | Ahead: \\2]@p'"
+
+	### House-keeping ###
+	up = "!(git checkout master ; git pull ; git checkout -)" # Update master.
+	cl = clean -fd
+	clx = clean -fdx
+	discard = "!(git reset --hard ; git clean -fd)"
+	fu = "!f() { git clean -fd ; git fetch origin ; git reset --hard origin/$(git branch-name) ; git clean -fdx ; } ; f"
+	# Stash changes force pull to the lastest changes and then apply the stash on top of it
+	receive = "!f() { git stash save --include-untracked ; git fetch origin ; git reset --hard origin/$(git branch-name) ; git stash apply ; } ; f"
+	fixup = "!f() { git rebase -i HEAD~${1:-2} ; } ; f"
+
+	### Rebasing ###
+	rb = rebase master
+	pf = push -f
+	rbc = rebase --continue
+	rbs = rebase --skip
+	unbase = "!git rebase -i HEAD~$(git branch-count)"
+
+	### Stashing ###
+	sl = stash list
+	sa = stash apply
+	ss = stash save
+[http]
+	postbuffer = 157286400
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[winUpdater]
+	recentlySeenVersion = 2.21.0.windows.1
