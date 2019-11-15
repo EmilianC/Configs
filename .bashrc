@@ -1,3 +1,14 @@
+alias clr=clear
+alias cls=clear
+alias quit=exit
+
+alias bashrc='source ~/.bashrc'
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+
 # ripgrep with clean output.
 function rip()
 {
