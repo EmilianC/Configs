@@ -18,7 +18,6 @@
 	co = checkout
 	stat = status
 	view = "!start ."
-	fstr = grep -Ii --line-number
 	cfg = "!git config -l | grep alias | cut -c 7-" # List alias
 	editcfg = "!start notepad++ ~/.gitconfig"
 	patch = "!git diff > $(git branch-name).patch"
