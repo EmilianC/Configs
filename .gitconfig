@@ -35,14 +35,14 @@
 	force-update = "!f() { git clean -fd ; git fetch origin ; git reset --hard origin/$(git branch-name) ; git clean -fdx ; } ; f"
 	# Stash changes force pull to the lastest changes and then apply the stash on top of it
 	receive = "!f() { git stash save --include-untracked ; git fetch origin ; git reset --hard origin/$(git branch-name) ; git stash apply ; } ; f"
-	fixup = "!f() { git rebase -i --rebase-merges HEAD~${1:-2} ; } ; f"
+	fixup = "!f() { git rebase -i --rebase-merges --committer-date-is-author-date HEAD~${1:-2} ; } ; f"
 
 	### Rebasing ###
 	rb = rebase master
 	pf = push -f
 	rbc = rebase --continue
 	rbs = rebase --skip
-	unbase = "!git rebase -i --rebase-merges HEAD~$(git branch-count)"
+	unbase = "!git rebase -i --rebase-merges --committer-date-is-author-date HEAD~$(git branch-count)"
 
 	### Stashing ###
 	sl = stash list
