@@ -19,7 +19,7 @@
 	stat = status
 	view = "!start ."
 	cfg = "!git config -l | grep alias | cut -c 7-" # List alias
-	editcfg = "!start notepad++ ~/.gitconfig"
+	editcfg = "!start ~/.gitconfig"
 	patch = "!git diff > $(git branch-name).patch"
 	branch-name = "!git rev-parse --abbrev-ref HEAD"
 	branch-count = "!git rev-list --count HEAD ^master"
