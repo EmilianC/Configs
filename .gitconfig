@@ -38,7 +38,7 @@
 	fixup = "!f() { git rebase -i --rebase-merges --committer-date-is-author-date HEAD~${1:-2} ; } ; f"
 
 	### Rebasing ###
-	rb = rebase master
+	rb = rebase master --committer-date-is-author-date
 	pf = push -f
 	rbc = rebase --continue
 	rbs = rebase --skip
