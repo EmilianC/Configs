@@ -1,2 +1,5 @@
 .config/hypr/scripts/.wallpaper_state
+
+# Generated files
 .config/hypr/config/generated_colors.conf
+.config/wofi/style.css
