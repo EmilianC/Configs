@@ -1,0 +1,48 @@
+/* !! THIS FILE IS AUTO GENERATED (See ~/.config/ricemood/) !! */
+
+* {
+    font-family: "Hack", monospace;
+}
+
+window {
+    background-color: #^r@Muted#hex^;
+}
+
+#input {
+    margin: 5px;
+    border-radius: 0px;
+    border: none;
+    background-color: #^r@LightMuted#hex^;
+    color: #ffffffff;
+}
+
+#inner-box {
+    background-color: #^r@DarkMuted#hex^;
+}
+
+#outer-box {
+    width: 200px;
+    height: 00px;
+    margin: 2px;
+    padding: 10px;
+    background-color: #^r@DarkMuted#hex^;
+}
+
+#scroll {
+    margin: 5px;
+}
+
+#text {
+    margin-left: 5px;
+    padding: 4px;
+    color: #ffffffff;
+    text-shadow: 1px 1px black;
+}
+
+#entry:selected {
+    background-color: #^r@LightVibrant#hex^;
+}
+
+#text:selected {
+    background: transparent;
+}
