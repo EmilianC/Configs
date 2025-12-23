@@ -1,0 +1,303 @@
+{
+	"layer": "bottom",
+	"position": "top",
+
+	//"output": "DP-1",
+	//"height": 20,
+
+	"margin-left": 0,
+	"margin-bottom": 0,
+	"margin-right": 0,
+	"spacing": 1, // Gaps between modules
+
+	"modules-left": [
+		"gamemode",
+		"hyprland/window"
+	],
+	"modules-center": [
+		"hyprland/workspaces"
+	],
+	"modules-right": [
+		"custom/spotify",
+		"wlr/taskbar",
+		"tray",
+		"wireplumber",
+		"bluetooth",
+		"clock",
+		"custom/updates",
+		"custom/power"
+	],
+
+	// -------------------------------------------------------------------------
+	// Modules
+	// -------------------------------------------------------------------------
+
+	"wlr/taskbar": {
+		"format": "{icon}",
+		"tooltip-format": "{title}",
+		"tooltip": true,
+		"on-click": "activate",
+		"on-click-middle": "close",
+		"sort-by-app-id": true,
+		"active-first": false,
+		"all-outputs": false,
+		"ignore-list": [
+			"Bluetooth Devices"
+		]
+	},
+
+	"custom/sp1": {
+		"format": " | ",
+		"tooltip": false
+	},
+	"custom/sp2": {
+		"format": " |",
+		"tooltip": false
+	},
+	"custom/power": {
+		"format": " ⏻ ",
+		"tooltip": true,
+		"on-click": "~/.config/hypr/scripts/power_menu.sh"
+	},
+	"custom/gammastep": {
+		"interval": 5,
+		"return-type": "json",
+		"exec": {
+			"pre": "if unit_status=\"$(systemctl --user is-active gammastep)\"; then\nstatus=\"$unit_status ($(journalctl --user -u gammastep.service -g 'Period: ' | tail -1 | cut -d ':' -f6 | xargs))\"\nelse\nstatus=\"$unit_status\"\nfi",
+			"alt": "${status:-inactive}",
+			"tooltip": "Gammastep is $status"
+		},
+		"format": "{icon}",
+		"format-icons": {
+			"activating": "󰁪 ",
+			"deactivating": "󰁪 ",
+			"inactive": "? ",
+			"active (Night)": " ",
+			"active (Nighttime)": " ",
+			"active (Transition (Night)": " ",
+			"active (Transition (Nighttime)": " ",
+			"active (Day)": " ",
+			"active (Daytime)": " ",
+			"active (Transition (Day)": " ",
+			"active (Transition (Daytime)": " "
+		},
+		"on-click": "systemctl --user is-active gammastep && systemctl --user stop gammastep || systemctl --user start gammastep"
+	},
+	"custom/updates": {
+		"format": " {}",
+		"return-type": "json",
+		"exec": "~/.config/waybar/scripts/count_updates.sh",
+		"on-click": "alacritty -e \"arch-update\"",
+		"restart-interval": 90,
+		"escape": true
+	},
+
+	"clock#1": {
+		"format": " {:%a}",
+		"tooltip": false,
+		"on-click": "gsimplecal"
+	},
+	"clock#2": {
+		"format": " {:%d-%h-%Y}",
+		"tooltip": false,
+		"on-click": "gsimplecal"
+	},
+	"clock#3": {
+		"format": " {:%H:%M:%S %p}",
+		"tooltip": false,
+		"on-click": "gsimplecal"
+	},
+	"custom/spotify": {
+		"exec": "~/.config/waybar/mediaplayer.py --player spotify",
+		"format": "{}",
+		"return-type": "json",
+		//"on-click": "playerctl play-pause",
+		"on-click": "playerctl next",
+		"on-scroll-up": "playerctl next",
+		"on-scroll-down": "playerctl previous"
+	},
+	"custom/media": {
+		"format": "{0} {1}",
+		"return-type": "json",
+		"max-length": 40,
+		"format-icons": {
+			"spotify": "",
+			"default": "🎜"
+		},
+		"escape": true
+		//"exec": "~/.config/waybar/mediaplayer.py" // Script in resources folder
+		// "exec": "~/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+	},
+
+	"temperature": {
+		// "thermal-zone": 1,
+		"interval": 4,
+		//"hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
+		"critical-threshold": 80,
+		// "format-critical": " {temperatureC}°C",
+		"format-critical": "  {temperatureC}°C",
+		"format": "{icon}  {temperatureC}°C",
+		"format-icons": ["", "", ""],
+		"max-length": 7,
+		"min-length": 7,
+		"on-click": "xsensors"
+	},
+
+	"memory": {
+		"interval": 30,
+		"format": "  {used:0.2f} / {total:0.0f} GB",
+		"on-click": "alacritty -e btop"
+	},
+
+	"network": {
+		"format-wifi": " {essid} ({signalStrength}%)",
+		"format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+		"format-linked": "{ifname} (No IP) ",
+		"format": "",
+		"format-disconnected": "",
+		"format-alt": "{ifname}: {ipaddr}/{cidr}",
+		"on-click": "wl-copy $(ip address show up scope global | grep inet | head -n1 | cut -d/ -f 1 | tr -d [:space:] | cut -c5-)",
+		"on-click-right": "wl-copy $(ip address show up scope global | grep inet6 | head -n1 | cut -d/ -f 1 | tr -d [:space:] | cut -c6-)",
+		"tooltip-format": " {bandwidthUpBits}  {bandwidthDownBits}\n{ifname}\n{ipaddr}/{cidr}\n",
+		"tooltip-format-wifi": " {essid} {frequency}MHz\nStrength: {signaldBm}dBm ({signalStrength}%)\nIP: {ipaddr}/{cidr}\n {bandwidthUpBits}  {bandwidthDownBits}",
+		"interval": 10
+	},
+
+	"idle_inhibitor": {
+		"format": "{icon}",
+		"format-icons": {
+			"activated": "",
+			"deactivated": ""
+		},
+		"tooltip": "true"
+	},
+
+	"clock": {
+		"format": "  {:%H:%M   %e %b}",
+		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+		"today-format": "<b>{}</b>"
+	},
+
+	"clock#date": {
+		"format": "󰥔  {:%H:%M \n %e %b}",
+		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+		"today-format": "<b>{}</b>"
+	},
+
+	"cpu": {
+		"interval": 1,
+		//"format": " {}%", // Icon: microchip
+		"format": "{max_frequency}GHz <span color=\"darkgray\">| {usage}%</span>",
+		"max-length": 13,
+		"min-length": 13
+	},
+
+	"mpd": {
+		"max-length": 25,
+		"format": "<span foreground='#bb9af7'></span> {title}",
+		"format-paused": " {title}",
+		"format-stopped": "<span foreground='#bb9af7'></span>",
+		"format-disconnected": "",
+		"on-click": "mpc --quiet toggle",
+		"on-click-right": "mpc update; mpc ls | mpc add",
+		"on-click-middle": "alacritty -e ncmpcpp",
+		"on-scroll-up": "mpc --quiet prev",
+		"on-scroll-down": "mpc --quiet next",
+		"smooth-scrolling-threshold": 5,
+		"tooltip-format": "{title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%H:%M:%S})"
+	},
+
+	// https://man.archlinux.org/man/extra/waybar/waybar-hyprland-workspaces.5.en
+	"hyprland/workspaces": {
+		"format": "{icon}",
+		"format-icons": {
+			"active": "█",
+			"default": "▂"
+		},
+		"all-outputs": false,
+		"persistent-only": true,
+		"move-to-monitor": false,
+		"sort-by-number": true,
+		"active-only": false
+	},
+
+	// https://man.archlinux.org/man/extra/waybar/waybar-hyprland-window.5.en
+	"hyprland/window": {
+		"format": "{}",
+		"max-length": 100,
+		"separate-outputs": false,
+		"icon": true,
+		"icon-size": 20,
+		"expand": false,
+		"rewrite": {
+			"(.*) — Mozilla Firefox(.*)": "$1",
+			"(.*) - Youtube(.*)": "$1",
+			"(.*) - Discord": "$1"
+		}
+	},
+
+	"bluetooth": {
+		"format": " {status}",
+		"format-disabled": " disabled",
+		"format-off": " off",
+		"interval": 30,
+		"on-click": "blueman-manager",
+		"format-no-controller": " -"
+	},
+
+	// "bluetooth": {
+	// 	// "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
+	// 	// "format": "󰂯 {status}",
+	// 	// format-* handles every state, so default format is not necessary.
+	// 	"format-on": "󰂯",
+	// 	"format-off": "󰂲",
+	// 	"format-disabled": "", // an empty format will hide the module
+	// 	"format-connected": "󰂱 {num_connections}",
+	// 	// "tooltip-format": "{controller_alias}\t{controller_address}",
+	// 	// "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+	// 	"tooltip-format-connected": "{device_enumerate}",
+	// 	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+	// 	"on-click": ""
+	// },
+
+	"wireplumber": {
+		"on-click": "pavucontrol",
+		"on-click-right": "amixer sset Master toggle 1>/dev/null",
+		//on-click: "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
+		//on-scroll-down: "${wpctl} set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 0.04+";
+		//on-scroll-up: "${wpctl} set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 0.04-";
+		"format": "<span foreground='#fab387'>{icon}</span>  {volume}%",
+		"format-muted": " ",
+		"format-source": "",
+		"format-source-muted": "",
+		//"format-muted": "<span foreground='#fab387'> </span>",
+		//"format-icons": [ "<span foreground='#fab387'></span>" ]
+		"format-icons": {
+			"headphone": " ",
+			"hands-free": " ",
+			"headset": " ",
+			"phone": " ",
+			"portable": " ",
+			"car": " ",
+			"default": [" ", " ", " "]
+		}
+	},
+
+	"tray": {
+		"icon-size": 18,
+		"spacing": 5,
+		"show-passive-items": false
+	},
+
+	"gamemode": {
+		"format": "{glyph}",
+		"format-alt": "{glyph} {count}",
+		"glyph": "",
+		"hide-not-running": true,
+		"use-icon": false,
+		"icon-spacing": 0,
+		"icon-size": 0,
+		"tooltip": true,
+		"tooltip-format": "Games running: {count}"
+	}
+}
