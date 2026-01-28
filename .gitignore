@@ -2,4 +2,5 @@
 
 # Generated files
 .config/hypr/config/generated_colors.conf
+.config/wob/wob.ini
 .config/wofi/style.css

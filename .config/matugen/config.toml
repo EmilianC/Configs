@@ -1,0 +1,102 @@
+# https://github.com/InioX/matugen/blob/main/example/config.toml
+
+[config]
+# If set to enabled, a check for updates will be performed when the `matugen` command is run.
+version_check = false
+
+# The color which should be used as the source_color if no good color was found from an image.
+fallback_color = "#3E436F"
+
+# Enables caching of the colors extracted from wallpapers.
+caching = true
+
+# Expressions are replaced inline with values.
+expr_prefix = "{{"
+expr_postfix = "}}"
+
+# Blocks are for if-statements, for-loops etc.
+block_prefix = "<*"
+block_postfix = "*>"
+
+# https://iniox.github.io/#matugen/templates
+
+[templates.hyprland]
+input_path  = "~/.config/hypr/config/generated_colors.conf.template"
+output_path = "~/.config/hypr/config/generated_colors.conf"
+
+[templates.wob]
+input_path  = "~/.config/wob/wob.ini.template"
+output_path = "~/.config/wob/wob.ini"
+
+[templates.wofi]
+input_path  = "~/.config/wofi/style.css.template"
+output_path = "~/.config/wofi/style.css"
+
+# Reference generated color names and output:
+# colors {
+#   background                 #111318
+#   error                      #FFB4AB
+#   error_container            #93000A
+#   inverse_on_surface         #2E3036
+#   inverse_primary            #425E91
+#   inverse_surface            #E2E2E9
+#   on_background              #E2E2E9
+#   on_error                   #690005
+#   on_error_container         #FFDAD6
+#   on_primary                 #0D2F5F
+#   on_primary_container       #D7E2FF
+#   on_primary_fixed           #001B3F
+#   on_primary_fixed_variant   #294677
+#   on_secondary               #283041
+#   on_secondary_container     #DAE2F9
+#   on_secondary_fixed         #131C2C
+#   on_secondary_fixed_variant #3E4759
+#   on_surface                 #E2E2E9
+#   on_surface_variant         #C4C6D0
+#   on_tertiary                #3F2844
+#   on_tertiary_container      #FAD8FD
+#   on_tertiary_fixed          #29132E
+#   on_tertiary_fixed_variant  #573E5B
+#   outline                    #8E9099
+#   outline_variant            #44474E
+#   primary                    #ABC7FF
+#   primary_container          #294677
+#   primary_fixed              #D7E2FF
+#   primary_fixed_dim          #ABC7FF
+#   scrim                      #000000
+#   secondary                  #BEC6DC
+#   secondary_container        #3E4759
+#   secondary_fixed            #DAE2F9
+#   secondary_fixed_dim        #BEC6DC
+#   shadow                     #000000
+#   source_color               #036BD8
+#   surface                    #111318
+#   surface_bright             #37393E
+#   surface_container          #1E2025
+#   surface_container_high     #282A2F
+#   surface_container_highest  #33353A
+#   surface_container_low      #1A1C20
+#   surface_container_lowest   #0C0E13
+#   surface_dim                #111318
+#   surface_tint               #ABC7FF
+#   surface_variant            #44474E
+#   tertiary                   #DDBCE0
+#   tertiary_container         #573E5B
+#   tertiary_fixed             #FAD8FD
+#   tertiary_fixed_dim         #DDBCE0
+# }
+
+# Available color format suffix tags:
+#   hex
+#   hex_stripped
+#   rgb
+#   rgba
+#   hsl
+#   hsla
+#   red
+#   green
+#   blue
+#   alpha
+#   hue
+#   saturation
+#   lightness

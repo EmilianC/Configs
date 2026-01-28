@@ -261,17 +261,12 @@
 	// },
 
 	"wireplumber": {
-		"on-click": "pavucontrol",
+		"on-click": "pavucontrol --tab=3",
 		"on-click-right": "amixer sset Master toggle 1>/dev/null",
-		//on-click: "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
-		//on-scroll-down: "${wpctl} set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 0.04+";
-		//on-scroll-up: "${wpctl} set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 0.04-";
 		"format": "<span foreground='#fab387'>{icon}</span>  {volume}%",
 		"format-muted": " ",
 		"format-source": "",
 		"format-source-muted": "",
-		//"format-muted": "<span foreground='#fab387'> </span>",
-		//"format-icons": [ "<span foreground='#fab387'></span>" ]
 		"format-icons": {
 			"headphone": " ",
 			"hands-free": " ",

@@ -1,0 +1,6 @@
+$color_primary      = rgb({{ colors.primary.default.hex_stripped }}) #{{ colors.primary.default.hex_stripped }}
+$color_secondary    = rgb({{ colors.secondary.default.hex_stripped }}) #{{ colors.secondary.default.hex_stripped }}
+$color_tertiary     = rgb({{ colors.tertiary.default.hex_stripped }}) #{{ colors.tertiary.default.hex_stripped }}
+$color_bg_primary   = rgb({{ colors.background.default.hex_stripped }}) #{{ colors.background.default.hex_stripped }}
+$color_bg_secondary = rgb({{ colors.background.default.hex_stripped | lighten: 10.0}}) #{{ colors.background.default.hex_stripped | lighten: 10.0}}
+$color_bg_tertiary  = rgb({{ colors.background.default.hex_stripped | lighten: 25.0}}) #{{ colors.background.default.hex_stripped | lighten: 25.0}}

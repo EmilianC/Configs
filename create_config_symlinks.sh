@@ -34,7 +34,8 @@ create_directory_symlink()
 }
 
 create_directory_symlink "$THIS_DIR/.config/hypr" "$HOME/.config/hypr"
+create_directory_symlink "$THIS_DIR/.config/matugen" "$HOME/.config/matugen"
 create_directory_symlink "$THIS_DIR/.config/pipewire" "$HOME/.config/pipewire"
-create_directory_symlink "$THIS_DIR/.config/ricemood" "$HOME/.config/ricemood"
 create_directory_symlink "$THIS_DIR/.config/waybar" "$HOME/.config/waybar"
+create_directory_symlink "$THIS_DIR/.config/wob" "$HOME/.config/wob"
 create_directory_symlink "$THIS_DIR/.config/wofi" "$HOME/.config/wofi"

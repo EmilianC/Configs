@@ -1,0 +1,15 @@
+anchor = top center
+timeout = 700
+max = 100
+width = 326
+height = 33
+border_offset = 3
+border_size = 2
+bar_padding = 3
+# top right bottom left
+margin = 80 0 0 0
+border_color = {{ colors.inverse_primary.default.hex_stripped }}ff
+background_color = {{ colors.background.default.hex_stripped }}ff
+bar_color = {{ colors.primary.default.hex_stripped }}ff
+overflow_mode = nowrap
+orientation = horizontal
