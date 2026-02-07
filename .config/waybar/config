@@ -262,7 +262,7 @@
 
 	"wireplumber": {
 		"on-click": "pavucontrol --tab=3",
-		"on-click-right": "amixer sset Master toggle 1>/dev/null",
+		"on-click-right": "killall pavucontrol",
 		"format": "<span foreground='#fab387'>{icon}</span>  {volume}%",
 		"format-muted": " ",
 		"format-source": "",
