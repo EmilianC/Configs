@@ -1,0 +1,8 @@
+:root {
+  --color-primary:      #{{ colors.primary.default.hex_stripped }};
+  --color-secondary:    #{{ colors.secondary.default.hex_stripped }};
+  --color-tertiary:     #{{ colors.tertiary.default.hex_stripped }};
+  --color-bg-primary:   #{{ colors.background.default.hex_stripped }};
+  --color-bg-secondary: #{{ colors.background.default.hex_stripped | lighten: 10.0}};
+  --color-bg-tertiary:  #{{ colors.background.default.hex_stripped | lighten: 25.0}};
+}

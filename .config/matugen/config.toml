@@ -24,6 +24,10 @@ block_postfix = "*>"
 input_path  = "~/.config/hypr/config/generated_colors.conf.template"
 output_path = "~/.config/hypr/config/generated_colors.conf"
 
+[templates.waybar]
+input_path  = "~/.config/waybar/generated_colors.css.template"
+output_path = "~/.config/waybar/generated_colors.css"
+
 [templates.wob]
 input_path  = "~/.config/wob/wob.ini.template"
 output_path = "~/.config/wob/wob.ini"
