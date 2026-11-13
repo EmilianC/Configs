@@ -215,7 +215,7 @@
 			"default": "▂"
 		},
 		"all-outputs": false,
-		"persistent-only": true,
+		"persistent-only": false,
 		"move-to-monitor": false,
 		"sort-by-number": true,
 		"active-only": false
