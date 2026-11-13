@@ -63,14 +63,15 @@ hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"),       { description 
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"),   { description = "Previous track" })
 
 -- ### Workspaces ###
-hl.bind(v.mainMod .. " + 1", hl.dsp.focus({ workspace = "name:" .. v.wks_main }))
-hl.bind(v.mainMod .. " + 2", hl.dsp.focus({ workspace = "name:" .. v.wks_main2 }))
-hl.bind(v.mainMod .. " + 3", hl.dsp.focus({ workspace = "name:" .. v.wks_gaming }))
-hl.bind(v.mainMod .. " + 4", hl.dsp.focus({ workspace = "name:" .. v.wks_side }))
-hl.bind(v.mainMod .. " + 5", hl.dsp.focus({ workspace = "name:" .. v.wks_tv }))
+hl.bind(v.mainMod .. " + 1", hl.dsp.focus({ workspace = v.wks_main }))
+hl.bind(v.mainMod .. " + 2", hl.dsp.focus({ workspace = v.wks_secondary }))
+hl.bind(v.mainMod .. " + 3", hl.dsp.focus({ workspace = v.wks_gaming }))
+hl.bind(v.mainMod .. " + 4", hl.dsp.focus({ workspace = v.wks_side }))
+hl.bind(v.mainMod .. " + 5", hl.dsp.focus({ workspace = v.wks_tv }))
 
 -- These don't work unless the main monitor is focused.
 -- The logic will likely need to be forwarded to a bash script.
+-- https://wiki.hypr.land/configuring/selectors/#workspace-query
 hl.bind(v.mainMod .. " + CTRL + right", hl.dsp.focus({ workspace = "m+1" }), { description = "Scroll right through workspaces" })
 hl.bind(v.mainMod .. " + CTRL + left",  hl.dsp.focus({ workspace = "m-1" }), { description = "Scroll left through workspaces" })
 

@@ -36,11 +36,16 @@ local vars = {
     volume_step = "3%",
 
     -- Workspaces
-    wks_main   = "workspace_main",
-    wks_main2  = "workspace_main2",
-    wks_gaming = "workspace_gaming",
-    wks_side   = "workspace_side",
-    wks_tv     = "workspace_tv",
+    wks_main      = 1,
+    wks_secondary = 2,
+    wks_gaming    = 3,
+    wks_side      = 4,
+    wks_tv        = 5,
+    wks_main_name      = "workspace_main",
+    wks_secondary_name = "workspace_secondary",
+    wks_gaming_name    = "workspace_gaming",
+    wks_side_name      = "workspace_side",
+    wks_tv_name        = "workspace_tv",
 
     -- Screenshots
     shot_region = "grimblast --freeze copy area",

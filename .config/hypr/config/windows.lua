@@ -41,7 +41,7 @@ hl.window_rule({
     match = { tag = "game" },
 
     content = "game",
-    workspace = "name:" .. v.wks_gaming,
+    workspace = v.wks_gaming,
     opacity = "1 override",
 })
 

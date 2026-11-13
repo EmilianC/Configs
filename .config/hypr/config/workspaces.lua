@@ -3,24 +3,24 @@
 local v = require("config.variables")
 
 hl.workspace_rule({
-    workspace = "1",
+    workspace = v.wks_main,
     persistent = true,
-    default_name = v.wks_main,
+    default_name = v.wks_main_name,
     monitor = v.monitor_main,
     default = true,
 })
 
 hl.workspace_rule({
-    workspace = "2",
+    workspace = v.wks_secondary,
     persistent = true,
-    default_name = v.wks_main2,
+    default_name = v.wks_secondary_name,
     monitor = v.monitor_main,
 })
 
 hl.workspace_rule({
-    workspace = "3",
+    workspace = v.wks_gaming,
     persistent = true,
-    default_name = v.wks_gaming,
+    default_name = v.wks_gaming_name,
     monitor = v.monitor_main,
     no_rounding = true,
     no_border = true,
@@ -31,16 +31,16 @@ hl.workspace_rule({
 })
 
 hl.workspace_rule({
-    workspace = "4",
+    workspace = v.wks_side,
     persistent = true,
-    default_name = v.wks_side,
+    default_name = v.wks_side_name,
     monitor = v.monitor_side,
 })
 
 hl.workspace_rule({
-    workspace = "5",
+    workspace = v.wks_tv,
     persistent = true,
-    default_name = v.wks_tv,
+    default_name = v.wks_tv_name,
     monitor = v.monitor_tv,
 })
 
