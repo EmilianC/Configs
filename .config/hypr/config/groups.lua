@@ -50,13 +50,11 @@ hl.config({
     },
 
     dwindle = { -- https://wiki.hypr.land/configuring/layouts/dwindle-layout/
-        special_scale_factor = 0.8,
         preserve_split = true,
     },
 
     master = { -- https://wiki.hypr.land/configuring/layouts/master-layout/
         new_status = "master",
-        special_scale_factor = 0.8,
     },
 
     ecosystem = { -- https://wiki.hypr.land/configuring/core/config-options/#ecosystem
