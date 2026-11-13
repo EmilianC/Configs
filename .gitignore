@@ -1,7 +1,7 @@
 .config/hypr/scripts/.wallpaper_state
 
 # Generated files
-.config/hypr/config/generated_colors.conf
+.config/hypr/config/generated_colors.lua
 .config/waybar/generated_colors.css
 .config/wob/wob.ini
 .config/wofi/style.css
