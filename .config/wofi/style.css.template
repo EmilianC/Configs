@@ -11,7 +11,7 @@ window {
     border-radius: 0px;
     border: none;
     background-color: {{ colors.background.default.hex | lighten: 20.0 }};
-    color: #ffffffff;
+    color: #ffffff;
 }
 
 #inner-box {
@@ -19,8 +19,6 @@ window {
 }
 
 #outer-box {
-    width: 200px;
-    height: 00px;
     margin: 2px;
     padding: 10px;
     background-color: {{ colors.surface_container.default.hex }};
@@ -33,7 +31,7 @@ window {
 #text {
     margin-left: 5px;
     padding: 4px;
-    color: #ffffffff;
+    color: #ffffff;
     text-shadow: 1px 1px black;
 }
 
