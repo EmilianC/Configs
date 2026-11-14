@@ -22,19 +22,10 @@ set_wallpaper()
 		exit 1
 	fi
 
-	# Record all existing swaybg instances.
-	# They will be cleaned up after the switch.
-	IFS=' ' read -r -a pids <<< $(pidof swaybg)
-
+	killall swaybg
 	swaybg -m fill -i "$wallpaper_file" & disown
-	echo "$wallpaper_file" > "$STATE_FILE"
 
-	# Ensure the wallpaper has had time to
-	# display, then remove the old processes.
-	(
-		sleep 4
-		kill -9 "${pids[@]}"
-	) &
+	echo "$wallpaper_file" > "$STATE_FILE"
 }
 
 select_wallpaper()
